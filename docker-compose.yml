@@ -1,0 +1,82 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: do-verdict-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./rag_data:/app/rag_data
+      - ./models:/app/models
+      - ./Projeto_Final_Artefatos:/app/Projeto_Final_Artefatos
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+      - CHROMA_HOST=chroma
+      - CHROMA_PORT=8000
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=do_verdict
+      - POSTGRES_USER=insurtechlab
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-insurtechlab2026}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      chroma:
+        condition: service_started
+    networks:
+      - do-verdict-net
+    restart: unless-stopped
+    command: >
+      bash -c "
+      echo 'Aguardando Postgres...' &&
+      sleep 5 &&
+      python rag_data/populate_chroma_susep.py || echo 'RAG populate falhou, usando cache' &&
+      python models/train_completude.py || echo 'Modelo ja existe' &&
+      streamlit run app/streamlit_app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true
+      "
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: do-verdict-postgres
+    environment:
+      POSTGRES_DB: do_verdict
+      POSTGRES_USER: insurtechlab
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-insurtechlab2026}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./rag_data/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U insurtechlab -d do_verdict"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - do-verdict-net
+    restart: unless-stopped
+  chroma:
+    image: chromadb/chroma:0.5.20
+    container_name: do-verdict-chroma
+    volumes:
+      - chroma_data:/chroma/chroma
+      - ./rag_data:/app/rag_data
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+    ports:
+      - "8000:8000"
+    networks:
+      - do-verdict-net
+    restart: unless-stopped
+volumes:
+  postgres_data:
+    name: do-verdict-postgres-data
+  chroma_data:
+    name: do-verdict-chroma-data
+networks:
+  do-verdict-net:
+    name: do-verdict-net
+    driver: bridge

@@ -1,0 +1,281 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "do_schema_v1 - D&O Brasil baseado Circular SUSEP 637/2021",
+  "version": "1.0.0",
+  "description": "Schema normalizado para comparação de apólices D&O com rastreabilidade SUSEP e jurisprudência STJ",
+  "type": "object",
+  "required": [
+    "identificacao",
+    "coberturas",
+    "limites",
+    "exclusoes",
+    "extensoes",
+    "condicoes"
+  ],
+  "properties": {
+    "identificacao": {
+      "type": "object",
+      "properties": {
+        "seguradora": {
+          "type": "string"
+        },
+        "numero_apolice": {
+          "type": "string"
+        },
+        "tomador": {
+          "type": "string"
+        },
+        "cnpj_tomador": {
+          "type": "string"
+        },
+        "vigencia_inicio": {
+          "type": "string",
+          "format": "date"
+        },
+        "vigencia_fim": {
+          "type": "string",
+          "format": "date"
+        },
+        "retroatividade": {
+          "type": "string"
+        },
+        "territorio": {
+          "type": "string"
+        }
+      }
+    },
+    "coberturas": {
+      "type": "object",
+      "properties": {
+        "cobertura_A": {
+          "type": "object",
+          "properties": {
+            "descricao": {
+              "type": "string"
+            },
+            "limite": {
+              "type": "number"
+            },
+            "ativa": {
+              "type": "boolean"
+            }
+          }
+        },
+        "cobertura_B": {
+          "type": "object",
+          "properties": {
+            "descricao": {
+              "type": "string"
+            },
+            "limite": {
+              "type": "number"
+            },
+            "ativa": {
+              "type": "boolean"
+            }
+          }
+        },
+        "cobertura_C": {
+          "type": "object",
+          "properties": {
+            "descricao": {
+              "type": "string"
+            },
+            "limite": {
+              "type": "number"
+            },
+            "ativa": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "limites": {
+      "type": "object",
+      "properties": {
+        "limite_maximo_agregado": {
+          "type": "number"
+        },
+        "sublimites": {
+          "type": "object",
+          "properties": {
+            "multa_CVM": {
+              "type": "object",
+              "properties": {
+                "valor": {
+                  "type": "number"
+                },
+                "cobre": {
+                  "type": "boolean"
+                },
+                "fonte_clausula": {
+                  "type": "string"
+                }
+              }
+            },
+            "multa_LGPD": {
+              "type": "object",
+              "properties": {
+                "valor": {
+                  "type": "number"
+                },
+                "cobre": {
+                  "type": "boolean"
+                },
+                "fonte_clausula": {
+                  "type": "string"
+                }
+              }
+            },
+            "custos_defesa": {
+              "type": "object",
+              "properties": {
+                "dentro_limite": {
+                  "type": "boolean"
+                },
+                "valor": {
+                  "type": "number"
+                },
+                "fonte_clausula": {
+                  "type": "string"
+                }
+              }
+            },
+            "penhora_bens": {
+              "type": "object",
+              "properties": {
+                "valor": {
+                  "type": "number"
+                },
+                "cobre": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "exclusoes": {
+      "type": "object",
+      "properties": {
+        "ato_doloso": {
+          "type": "object",
+          "properties": {
+            "exclui": {
+              "type": "boolean"
+            },
+            "clausula": {
+              "type": "string"
+            },
+            "jurisprudencia": {
+              "type": "string"
+            }
+          }
+        },
+        "insider_trading": {
+          "type": "object",
+          "properties": {
+            "exclui": {
+              "type": "boolean"
+            },
+            "clausula": {
+              "type": "string"
+            },
+            "jurisprudencia": {
+              "type": "string",
+              "default": "STJ REsp 1.601.555 - insider não coberto"
+            }
+          }
+        },
+        "poluicao": {
+          "type": "object",
+          "properties": {
+            "exclui": {
+              "type": "boolean"
+            },
+            "clausula": {
+              "type": "string"
+            }
+          }
+        },
+        "EPL_assedio": {
+          "type": "object",
+          "properties": {
+            "exclui": {
+              "type": "boolean"
+            },
+            "clausula": {
+              "type": "string"
+            }
+          }
+        },
+        "insolvencia_RJ": {
+          "type": "object",
+          "properties": {
+            "exclui": {
+              "type": "boolean"
+            },
+            "clausula": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "extensoes": {
+      "type": "object",
+      "properties": {
+        "nova_subsidiaria": {
+          "type": "boolean"
+        },
+        "prazo_complementar": {
+          "type": "string"
+        },
+        "prazo_suplementar": {
+          "type": "string"
+        },
+        "inabilitação": {
+          "type": "boolean"
+        }
+      }
+    },
+    "condicoes": {
+      "type": "object",
+      "properties": {
+        "franquia": {
+          "type": "number"
+        },
+        "participacao_obrigatoria": {
+          "type": "boolean"
+        },
+        "notificacao": {
+          "type": "string"
+        },
+        "score_completude": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "fonte_extracao": {
+          "type": "string"
+        },
+        "data_extracao": {
+          "type": "string"
+        },
+        "confianca_extracao": {
+          "type": "number"
+        },
+        "anonimizado": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
