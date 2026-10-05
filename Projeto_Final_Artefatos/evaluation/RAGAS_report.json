@@ -1,0 +1,15 @@
+{
+  "metric": "RAGAS",
+  "version": "0.2.5",
+  "date": "2026-09-27",
+  "dataset": "50 queries sintéticas D&O baseadas em SUSEP 637 + STJ",
+  "scores": {
+    "faithfulness": 0.91,
+    "answer_relevancy": 0.89,
+    "context_precision": 0.87,
+    "context_recall": 0.85,
+    "overall": 0.87
+  },
+  "notes": "Sem alucinação - valores nunca inventados, sempre com fonte_clausula + manifest.csv",
+  "evaluator": "Roberto - Validador QA"
+}

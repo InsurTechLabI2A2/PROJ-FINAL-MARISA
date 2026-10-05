@@ -1,0 +1,50 @@
+{
+  "trace_id": "do-verdict-20260927-001",
+  "duracao_total_s": 84,
+  "etapas": [
+    {
+      "agente": "Porteira",
+      "duracao_s": 12,
+      "pii_detectado": 8,
+      "status": "anonimizado"
+    },
+    {
+      "agente": "Escavador",
+      "duracao_s": 18,
+      "rag_chunks": 4,
+      "confianca": 0.92
+    },
+    {
+      "agente": "Taxonomista",
+      "duracao_s": 5,
+      "score_completude_A": 68,
+      "score_completude_B": 92
+    },
+    {
+      "agente": "Atuarial",
+      "duracao_s": 3,
+      "gaps_encontrados": 3
+    },
+    {
+      "agente": "Promotor",
+      "duracao_s": 8,
+      "argumento": "Exclusão 4.2.a"
+    },
+    {
+      "agente": "Defensor",
+      "duracao_s": 8,
+      "contra_argumento": "Cláusula 2.1.c"
+    },
+    {
+      "agente": "Juiz",
+      "duracao_s": 10,
+      "veredito": "Berkley vence",
+      "confianca": 0.82,
+      "fontes": [
+        "STJ REsp 1.601.555",
+        "SUSEP 637 art 3"
+      ]
+    }
+  ],
+  "observability": "Harness + LangSmith"
+}

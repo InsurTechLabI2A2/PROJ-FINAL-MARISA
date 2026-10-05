@@ -1,0 +1,83 @@
+<!DOCTYPE html><html><head><style>.slide-container{background-color:var(--slide-bg);}</style><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--slide-bg:#20110E;--slide-fg:#F1E7DC;--slide-primary:#4B88D4;--slide-accent:#E0563B;--slide-font-display:"Playfair Display";--slide-font-body:"Inter";}
+*{margin:0;padding:0;box-sizing:border-box;}
+.slide-container{width:1280px;height:720px;background:var(--slide-bg);color:var(--slide-fg);font-family:var(--slide-font-body);padding:44px 56px 36px;display:grid;grid-template-rows:auto auto 1fr auto;gap:14px 0;overflow:hidden;}
+.header{display:flex;justify-content:space-between;align-items:end;gap:24px;}
+.header h2{font-family:var(--slide-font-display);font-size:40px;line-height:1.05;font-weight:700;max-width:560px;}
+.header h2 span{color:var(--slide-primary);}
+.sub{font-size:12.5px;line-height:1.45;color:color-mix(in srgb, var(--slide-fg) 70%, transparent);max-width:480px;text-align:right;}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.18em;font-weight:700;color:var(--slide-accent);text-transform:uppercase;margin-bottom:6px;}
+.kicker::before{content:'';width:28px;height:2px;background:var(--slide-accent);}
+.tribunal-grid{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:16px;align-items:stretch;height:100%;}
+.card{border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;border:1px solid color-mix(in srgb, var(--slide-fg) 10%, transparent);}
+.card.promotor{background:color-mix(in srgb, var(--slide-accent) 12%, var(--slide-bg));border-color:color-mix(in srgb, var(--slide-accent) 28%, transparent);}
+.card.defensor{background:color-mix(in srgb, var(--slide-primary) 12%, var(--slide-bg));border-color:color-mix(in srgb, var(--slide-primary) 28%, transparent);}
+.card.juiz{background:color-mix(in srgb, var(--slide-fg) 6%, var(--slide-bg));border-color:color-mix(in srgb, var(--slide-fg) 14%, transparent);box-shadow:0 0 0 1px color-mix(in srgb, var(--slide-primary) 20%, transparent);}
+.role{font-size:10px;letter-spacing:0.16em;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.promotor .role{color:var(--slide-accent);}
+.defensor .role{color:var(--slide-primary);}
+.juiz .role{color:var(--slide-fg);}
+.role i{font-style:normal;font-size:14px;}
+.card h3{font-family:var(--slide-font-display);font-size:17px;line-height:1.2;font-weight:700;}
+.card p{font-size:12.5px;line-height:1.45;color:color-mix(in srgb, var(--slide-fg) 82%, transparent);}
+.prob{display:flex;align-items:center;gap:8px;margin-top:2px;}
+.prob .bar{flex:1;height:6px;border-radius:99px;background:color-mix(in srgb, var(--slide-fg) 12%, transparent);overflow:hidden;}
+.prob .fill{height:100%;border-radius:99px;}
+.promotor .fill{background:var(--slide-accent);width:85%;}
+.defensor .fill{background:var(--slide-primary);width:70%;}
+.juiz .fill{background:var(--slide-fg);width:82%;}
+.prob span{font-size:11px;font-weight:700;}
+.source{font-size:10px;line-height:1.4;padding:8px 10px;border-radius:10px;background:color-mix(in srgb, var(--slide-bg) 60%, transparent);border:1px dashed color-mix(in srgb, var(--slide-fg) 14%, transparent);color:color-mix(in srgb, var(--slide-fg) 65%, transparent);}
+.source strong{color:var(--slide-fg);font-weight:700;}
+.footer-row{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:2px;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-size:10px;padding:5px 10px;border-radius:99px;border:1px solid color-mix(in srgb, var(--slide-fg) 14%, transparent);color:color-mix(in srgb, var(--slide-fg) 68%, transparent);background:color-mix(in srgb, var(--slide-fg) 5%, transparent);}
+.veredict-badge{font-family:var(--slide-font-display);font-size:12px;font-weight:700;background:var(--slide-primary);color:#fff;padding:6px 14px;border-radius:99px;letter-spacing:0.04em;}
+</style><style>html,body{height:100%;}</style></head><body><div class="slide-container">
+<div class="header">
+<div>
+<div class="kicker">Diferencial Tribunal — não compara, julga</div>
+<h2>Tribunal Adversarial com <span>Juiz STJ</span> — elimina alucinação</h2>
+</div>
+<div class="sub"><strong>Cenário 1 CVM Insider Trading validado por Rogério — 40 anos REP Seguros.</strong> Promotor ataca cobertura, Defensor defende segurado, Juiz decide com STJ REsp 1.601.555 e SUSEP 637 art 3.</div>
+</div>
+
+<div class="tribunal-grid">
+<div class="card promotor">
+<div class="role">⚑ Promotor — Ataca cobertura</div>
+<h3>Exclusão 4.2.a ato doloso + STJ REsp 1.601.555</h3>
+<p>Insider trading é conduta dolosa, exclusão padrão D&O. STJ 3ª Turma unanimidade: informação privilegiada não coberta.</p>
+<div class="prob"><div class="bar"><div class="fill"></div></div><span style="color:var(--slide-accent)">85% negação</span></div>
+<div class="source"><strong>Fonte:</strong> Cláusula 4.2.a Tokio + STJ REsp 1.601.555 + SUSEP 637 art 3</div>
+</div>
+
+<div class="card defensor">
+<div class="role">🛡 Defensor — Defende segurado</div>
+<h3>Cobertura A protege patrimônio + custos defesa</h3>
+<p>Cobertura A side personal, custos defesa desde notificação Cláusula 2.1.c. Dolo precisa trânsito julgado.</p>
+<div class="prob"><div class="bar"><div class="fill"></div></div><span style="color:var(--slide-primary)">70% cobertura</span></div>
+<div class="source"><strong>Fonte:</strong> Cláusula 2.1.c + 2.3.b Berkley — custos fora do limite</div>
+</div>
+
+<div class="card juiz">
+<div class="role">⚖ Juiz+Narrador — Veredito com source tracing</div>
+<h3 style="color:var(--slide-fg)">Berkley vence — cobre multa CVM R$500k</h3>
+<p><strong style="color:var(--slide-fg)">Tokio 10MM:</strong> exclui CVM, Score 68%. <strong style="color:var(--slide-fg)">Berkley 15MM:</strong> cobre R$500k + custos fora, Score 92%.</p>
+<div class="prob"><div class="bar"><div class="fill" style="width:82%;background:var(--slide-primary)"></div></div><span>Confiança 82%</span></div>
+<div class="source"><strong>4 fontes obrigatórias:</strong> Cláusula 2.3.b Berkley + SUSEP 637 art 3º + STJ 1.601.555 + Nota Técnica SUSEP. Faithfulness 0.91</div>
+<div style="font-size:10px;color:var(--slide-primary);font-weight:700;margin-top:2px;">→ Veredito Board-Ready 1 página + Heatmap + JSON</div>
+</div>
+</div>
+
+<div class="footer-row">
+<div class="chips">
+<div class="chip">Cenário 2: LGPD R$2MM — Berkley vence R$1MM sublimite</div>
+<div class="chip">Cenário 3: Trabalhista EPL — exclusão ambos</div>
+<div class="chip">Cenário 4: RJ insolvência — cobertura parcial</div>
+<div class="chip">Cenário 5: Greenwashing E&O — fora escopo D&O</div>
+</div>
+<div class="veredict-badge">BERKLEY VENCE 4/5 CENÁRIOS</div>
+</div>
+</div></body></html>
